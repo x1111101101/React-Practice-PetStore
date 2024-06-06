@@ -1,0 +1,23 @@
+html, body {
+    margin: 0;
+    height: 100%;
+    padding: 0;
+}
+
+.stdpage {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 8fr 84fr 8fr;
+    height: 100vh;
+    margin: 0;
+}
+
+.header {
+    
+}
+
+.footer {
+    
+}
+
+/*# sourceMappingURL=/React%20Toy.e31bb0bc.css.map */
