@@ -2,6 +2,15 @@ html, body {
     margin: 0;
     height: 100%;
     padding: 0;
+    user-select:none;
+}
+@keyframes loading {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
 }
 
 .stdpage {
@@ -11,6 +20,49 @@ html, body {
     height: 100vh;
     margin: 0;
     overflow: hidden;
+}
+
+.stdcontent {
+    animation: loading 0.5s linear;
+}
+
+.zoomed-page {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 5vh 95vh;
+    height: 100vh;
+    margin: 0;
+}
+
+.zoomed-page-content {
+    animation: loading 0.5s linear;
+    margin: auto;
+    display: flex;
+    text-align: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.zoomed-page-header {
+    display: grid;
+    padding-left: 1%;
+    grid-template-columns: 1fr 1fr 6fr 1fr 1fr;
+}
+.zoomed-page-header-item label {
+    font-size: 2vh;
+    font-weight: bold;
+    display: block;
+}
+.zoomed-page-header-item {
+    margin: auto;
+    display: flex;
+    text-align: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.zoomed-page-header-item img {
+    height: 4vh;
+    width: 4vh;
 }
 
 .categories-hidden {
@@ -44,7 +96,6 @@ html, body {
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
-    
     text-align: center;
     align-items: center;
 }
@@ -55,6 +106,68 @@ html, body {
 }
 .footer-icon label {
     font-size: 1.3vh;
+}
+
+.a-none-decoration {
+    text-decoration: none;
+    color: inherit;
+}
+.a-none-decoration:active {
+    text-decoration: none;
+}
+img {
+    user-select: none;
+}
+img:active {
+    background-color: none;
+}
+.login-area {
+    display: grid;
+    font-size: 2em;
+    grid-template-rows: 2fr 1fr 2fr;
+}
+
+.login-area-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.login-input input {
+    padding: 1vh;
+    border-top: 0;
+    border-left: 0;
+    border-right: 0;
+    width: 60vw;
+    height: 4vh;
+    font-size: 0.7em;
+}
+
+.login-form button {
+    margin-top: 3vh;
+    width: 100%;
+    font-size: 0.5em;
+    padding-top: 1.3vh;
+    padding-bottom: 1.3vh;
+    color: white;
+    background-color: black;
+}
+
+.login-input {
+    display: grid;
+    grid-template-columns: 1fr;
+    padding: 0.5vh;
+}
+
+.login-signup-pannel {
+    text-align: center;
+    font-size: 0.5em;
+}
+.login-signup-pannel label {
+    color: rgb(122, 121, 121);
+}
+.login-signup-pannel a {
+    color: inherit;
 }
 
 /*# sourceMappingURL=/React%20Toy.e31bb0bc.css.map */

@@ -1,7 +1,7 @@
-import newMockServer from "../MockServer";
+import getMockServer from "../MockServer";
 import { createContext, useContext } from "react";
 
-const mockServer = newMockServer()
+const mockServer = getMockServer()
 
 export const AppContext = createContext()
 export const AppContextDefault = {

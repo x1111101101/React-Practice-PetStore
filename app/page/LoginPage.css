@@ -1,0 +1,48 @@
+.login-area {
+    display: grid;
+    font-size: 2em;
+    grid-template-rows: 2fr 1fr 2fr;
+}
+
+.login-area-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.login-input input {
+    padding: 1vh;
+    border-top: 0;
+    border-left: 0;
+    border-right: 0;
+    width: 60vw;
+    height: 4vh;
+    font-size: 0.7em;
+}
+
+.login-form button {
+    margin-top: 3vh;
+    width: 100%;
+    font-size: 0.5em;
+    padding-top: 1.3vh;
+    padding-bottom: 1.3vh;
+    color: white;
+    background-color: black;
+}
+
+.login-input {
+    display: grid;
+    grid-template-columns: 1fr;
+    padding: 0.5vh;
+}
+
+.login-signup-pannel {
+    text-align: center;
+    font-size: 0.5em;
+}
+.login-signup-pannel label {
+    color: rgb(122, 121, 121);
+}
+.login-signup-pannel a {
+    color: inherit;
+}

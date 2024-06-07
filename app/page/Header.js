@@ -14,7 +14,7 @@ function Category(props) {
 }
 
 function Icon(props) {
-    return <div className="header-icon">
+    return <div component={Link} to={props.to} className="header-icon">
         {props.children}
     </div>
 }

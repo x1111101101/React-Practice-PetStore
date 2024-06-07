@@ -37877,16 +37877,25 @@ function Page(props) {
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = newMockServer;
-function newMockServer() {
+exports.default = getMockServer;
+/*
+name: 카테고리 이름
+icon: 카테고리 아이콘 url
+
+
+*/
+
+function getMockServer() {
   return {
     getCategories: function getCategories() {
       var r = [];
       r.push({
-        name: "간식"
+        name: "간식",
+        list: ["덴탈껌", "껌", "영양/기능"]
       });
       r.push({
-        name: "사료"
+        name: "사료",
+        list: ["건식", "습식", "자연식"]
       });
       r.push({
         name: "미용용품"
@@ -37948,6 +37957,8 @@ function Category(props) {
 }
 function Icon(props) {
   return /*#__PURE__*/_react.default.createElement("div", {
+    component: _reactRouterDom.Link,
+    to: props.to,
     className: "header-icon"
   }, props.children);
 }
@@ -37982,34 +37993,56 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = Footer;
 var _react = _interopRequireDefault(require("react"));
+var _reactRouterDom = require("react-router-dom");
 require("./Page.css");
 var _items = _interopRequireDefault(require("../../public/images/icon/items.png"));
 var _user = _interopRequireDefault(require("../../public/images/icon/user.png"));
 var _home = _interopRequireDefault(require("../../public/images/icon/home.png"));
+var _AppContext = require("../context/AppContext");
 function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
+function _slicedToArray(r, e) { return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest(); }
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
+function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
+function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t.return && (u = t.return(), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
+function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
 function FooterIcon(props) {
-  return /*#__PURE__*/_react.default.createElement("div", {
-    className: "footer-icon"
-  }, props.children, /*#__PURE__*/_react.default.createElement("label", null, props.iconName));
+  return /*#__PURE__*/_react.default.createElement(_reactRouterDom.Link, {
+    className: "footer-icon a-none-decoration",
+    component: _reactRouterDom.Link,
+    to: props.linkTo
+  }, props.children, /*#__PURE__*/_react.default.createElement("label", {
+    style: {
+      display: "block"
+    }
+  }, props.iconName));
 }
 function Footer(props) {
+  var app = (0, _AppContext.useApp)();
+  var _ref = !app.isLoggedIn ? ["/login", "로그인/회원가입"] : ["/my", "마이페이지"],
+    _ref2 = _slicedToArray(_ref, 2),
+    userIconPath = _ref2[0],
+    userIconName = _ref2[1];
   return /*#__PURE__*/_react.default.createElement("div", {
     className: "footer"
   }, /*#__PURE__*/_react.default.createElement(FooterIcon, {
+    linkTo: "/main",
     iconName: "\uD648"
   }, /*#__PURE__*/_react.default.createElement("img", {
     src: _home.default
   })), /*#__PURE__*/_react.default.createElement(FooterIcon, {
+    linkTo: "/main",
     iconName: "\uCE74\uD14C\uACE0\uB9AC"
   }, /*#__PURE__*/_react.default.createElement("img", {
     src: _items.default
   })), /*#__PURE__*/_react.default.createElement(FooterIcon, {
-    iconName: "\uB85C\uADF8\uC778/\uD68C\uC6D0\uAC00\uC785"
+    linkTo: userIconPath,
+    iconName: userIconName
   }, /*#__PURE__*/_react.default.createElement("img", {
     src: _user.default
   })));
 }
-},{"react":"node_modules/react/index.js","./Page.css":"app/page/Page.css","../../public/images/icon/items.png":"public/images/icon/items.png","../../public/images/icon/user.png":"public/images/icon/user.png","../../public/images/icon/home.png":"public/images/icon/home.png"}],"app/page/StandardPage.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","react-router-dom":"node_modules/react-router-dom/dist/index.js","./Page.css":"app/page/Page.css","../../public/images/icon/items.png":"public/images/icon/items.png","../../public/images/icon/user.png":"public/images/icon/user.png","../../public/images/icon/home.png":"public/images/icon/home.png","../context/AppContext":"app/context/AppContext.js"}],"app/page/StandardPage.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -38056,7 +38089,184 @@ function ProductPage(props) {
   return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement("h3", null, "\uC0C1\uD488\uD398\uC774\uC9C0 \uC785\uB2C8\uB2E4."));
 }
 ;
-},{"react":"node_modules/react/index.js"}],"app/App.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js"}],"app/Hooks.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.useInput = useInput;
+var _react = _interopRequireWildcard(require("react"));
+function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
+function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function _slicedToArray(r, e) { return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest(); }
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
+function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
+function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t.return && (u = t.return(), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
+function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
+function useInput(initial, validator) {
+  var _useState = (0, _react.useState)(initial),
+    _useState2 = _slicedToArray(_useState, 2),
+    state = _useState2[0],
+    setState = _useState2[1];
+  var obj = {
+    onChange: function onChange(e) {
+      if (typeof validator !== "function" || validator(e)) setState(e.target.value);
+    },
+    value: state
+  };
+  return obj;
+}
+},{"react":"node_modules/react/index.js"}],"public/images/icon/back.png":[function(require,module,exports) {
+module.exports = "/back.04657418.png";
+},{}],"public/images/icon/home2.png":[function(require,module,exports) {
+module.exports = "/home2.2f408cf9.png";
+},{}],"app/page/ZoomedPage.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = ZoomedPage;
+var _react = _interopRequireDefault(require("react"));
+var _Page = _interopRequireDefault(require("./Page"));
+var _reactRouterDom = require("react-router-dom");
+var _back = _interopRequireDefault(require("../../public/images/icon/back.png"));
+var _home = _interopRequireDefault(require("../../public/images/icon/home2.png"));
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
+function HeaderItem(props) {
+  return /*#__PURE__*/_react.default.createElement("div", {
+    className: "zoomed-page-header-item"
+  }, props.children);
+}
+function HomeIcon(props) {
+  return /*#__PURE__*/_react.default.createElement(HeaderItem, null, /*#__PURE__*/_react.default.createElement(_reactRouterDom.Link, {
+    to: "/home"
+  }, /*#__PURE__*/_react.default.createElement("img", {
+    src: _home.default
+  })));
+}
+function BackwardIcon(props) {
+  var navigate = (0, _reactRouterDom.useNavigate)();
+  return /*#__PURE__*/_react.default.createElement(HeaderItem, null, /*#__PURE__*/_react.default.createElement("img", {
+    onClick: function onClick(e) {
+      e.preventDefault();
+      navigate(-1);
+    },
+    style: {
+      height: "5vh",
+      width: "3.5vh"
+    },
+    src: _back.default
+  }));
+}
+function ZoomedPageHeader(props) {
+  return /*#__PURE__*/_react.default.createElement("div", {
+    className: "zoomed-page-header"
+  }, props.items);
+}
+function ZoomedPageFooter(props) {
+  return /*#__PURE__*/_react.default.createElement("div", null);
+}
+function HeaderTitle(props) {
+  return /*#__PURE__*/_react.default.createElement(HeaderItem, null, /*#__PURE__*/_react.default.createElement("label", null, props.title));
+}
+function ZoomedPage(props) {
+  var headerItems = [/*#__PURE__*/_react.default.createElement(BackwardIcon, null), /*#__PURE__*/_react.default.createElement(HomeIcon, null)];
+  for (var i = 3; i < 5; i++) {
+    headerItems.push( /*#__PURE__*/_react.default.createElement("div", null));
+  }
+  headerItems[2] = /*#__PURE__*/_react.default.createElement(HeaderTitle, {
+    title: props.title
+  });
+  return /*#__PURE__*/_react.default.createElement(_Page.default, null, /*#__PURE__*/_react.default.createElement("div", {
+    className: "zoomed-page"
+  }, /*#__PURE__*/_react.default.createElement(ZoomedPageHeader, {
+    items: headerItems
+  }), /*#__PURE__*/_react.default.createElement("div", {
+    className: "zoomed-page-content"
+  }, props.children), /*#__PURE__*/_react.default.createElement(ZoomedPageFooter, null)));
+}
+},{"react":"node_modules/react/index.js","./Page":"app/page/Page.js","react-router-dom":"node_modules/react-router-dom/dist/index.js","../../public/images/icon/back.png":"public/images/icon/back.png","../../public/images/icon/home2.png":"public/images/icon/home2.png"}],"app/page/LoginPage.css":[function(require,module,exports) {
+var reloadCSS = require('_css_loader');
+module.hot.dispose(reloadCSS);
+module.hot.accept(reloadCSS);
+},{"_css_loader":"node_modules/parcel-bundler/src/builtins/css-loader.js"}],"app/page/LoginPage.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = LoginPage;
+var _react = _interopRequireDefault(require("react"));
+var _reactRouterDom = require("react-router-dom");
+var _StandardPage = _interopRequireDefault(require("./StandardPage"));
+var _Page = _interopRequireDefault(require("./Page"));
+var _Hooks = require("../Hooks");
+var _ZoomedPage = _interopRequireDefault(require("./ZoomedPage"));
+require("./LoginPage.css");
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
+function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
+function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
+function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), !0).forEach(function (r) { _defineProperty(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
+function _defineProperty(e, r, t) { return (r = _toPropertyKey(r)) in e ? Object.defineProperty(e, r, { value: t, enumerable: !0, configurable: !0, writable: !0 }) : e[r] = t, e; }
+function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : i + ""; }
+function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
+function LoginInput(props) {
+  return /*#__PURE__*/_react.default.createElement("div", {
+    className: "login-input"
+  }, /*#__PURE__*/_react.default.createElement("input", _extends({
+    type: props.type,
+    name: props.name
+  }, props.other)));
+}
+function LoginAreaItem(props) {
+  return /*#__PURE__*/_react.default.createElement("div", {
+    className: "login-area-item"
+  }, props.children);
+}
+function LoginButton(props) {
+  return /*#__PURE__*/_react.default.createElement("button", null, "\uB85C\uADF8\uC778");
+}
+function LoginForm(props) {
+  return /*#__PURE__*/_react.default.createElement(LoginAreaItem, null, /*#__PURE__*/_react.default.createElement("div", {
+    className: "login-form"
+  }, /*#__PURE__*/_react.default.createElement(LoginInput, {
+    type: "text",
+    name: "id",
+    other: _objectSpread(_objectSpread({}, props.idUseInput), {}, {
+      placeHolder: "아이디"
+    })
+  }), /*#__PURE__*/_react.default.createElement(LoginInput, {
+    type: "password",
+    name: "password",
+    other: _objectSpread(_objectSpread({}, props.passwordUseInput), {}, {
+      placeHolder: "비밀번호"
+    })
+  }), /*#__PURE__*/_react.default.createElement(LoginButton, null)));
+}
+function SignupPannel(props) {
+  return /*#__PURE__*/_react.default.createElement(LoginAreaItem, null, /*#__PURE__*/_react.default.createElement("div", {
+    className: "login-signup-pannel"
+  }, /*#__PURE__*/_react.default.createElement("label", null, "\uC544\uC774\uB514\uAC00 \uC5C6\uC73C\uC2E0\uAC00\uC694?"), /*#__PURE__*/_react.default.createElement("br", null), /*#__PURE__*/_react.default.createElement(_reactRouterDom.Link, {
+    to: "/signup"
+  }, "\uD68C\uC6D0\uAC00\uC785")));
+}
+function LoginPage(props) {
+  var idInput = (0, _Hooks.useInput)("");
+  var passwordInput = (0, _Hooks.useInput)("");
+  return /*#__PURE__*/_react.default.createElement(_ZoomedPage.default, {
+    title: "\uB85C\uADF8\uC778/\uD68C\uC6D0\uAC00\uC785"
+  }, /*#__PURE__*/_react.default.createElement("div", {
+    className: "login-area"
+  }, /*#__PURE__*/_react.default.createElement(LoginForm, {
+    idUseInput: idInput,
+    passwordUseInput: passwordInput
+  }), /*#__PURE__*/_react.default.createElement(SignupPannel, null)));
+}
+},{"react":"node_modules/react/index.js","react-router-dom":"node_modules/react-router-dom/dist/index.js","./StandardPage":"app/page/StandardPage.js","./Page":"app/page/Page.js","../Hooks":"app/Hooks.js","./ZoomedPage":"app/page/ZoomedPage.js","./LoginPage.css":"app/page/LoginPage.css"}],"app/App.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -38067,6 +38277,7 @@ var _react = _interopRequireDefault(require("react"));
 var _reactRouterDom = require("react-router-dom");
 var _MainPage = _interopRequireDefault(require("./page/MainPage"));
 var _ProductPage = _interopRequireDefault(require("./page/ProductPage"));
+var _LoginPage = _interopRequireDefault(require("./page/LoginPage"));
 var _AppContext = require("./context/AppContext");
 function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 function App(props) {
@@ -38082,6 +38293,9 @@ function App(props) {
     path: "/main/*",
     element: /*#__PURE__*/_react.default.createElement(_MainPage.default, null)
   }), /*#__PURE__*/_react.default.createElement(_reactRouterDom.Route, {
+    path: "/login/*",
+    element: /*#__PURE__*/_react.default.createElement(_LoginPage.default, null)
+  }), /*#__PURE__*/_react.default.createElement(_reactRouterDom.Route, {
     path: "/product/*",
     element: /*#__PURE__*/_react.default.createElement(_ProductPage.default, null)
   }), /*#__PURE__*/_react.default.createElement(_reactRouterDom.Route, {
@@ -38089,7 +38303,7 @@ function App(props) {
     element: /*#__PURE__*/_react.default.createElement(_MainPage.default, null)
   }), " "))));
 }
-},{"react":"node_modules/react/index.js","react-router-dom":"node_modules/react-router-dom/dist/index.js","./page/MainPage":"app/page/MainPage.js","./page/ProductPage":"app/page/ProductPage.js","./context/AppContext":"app/context/AppContext.js"}],"index.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","react-router-dom":"node_modules/react-router-dom/dist/index.js","./page/MainPage":"app/page/MainPage.js","./page/ProductPage":"app/page/ProductPage.js","./page/LoginPage":"app/page/LoginPage.js","./context/AppContext":"app/context/AppContext.js"}],"index.js":[function(require,module,exports) {
 "use strict";
 
 var _react = _interopRequireDefault(require("react"));
@@ -38124,7 +38338,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54289" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "58862" + '/');
   ws.onmessage = function (event) {
     checkedAssets = {};
     assetsToAccept = [];
