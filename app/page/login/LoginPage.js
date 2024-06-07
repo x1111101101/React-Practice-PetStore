@@ -1,9 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import StandardPage from "./StandardPage";
-import Page from "./Page";
-import { useInput } from "../Hooks";
-import ZoomedPage from "./ZoomedPage";
+import StandardPage from "../StandardPage";
+import Page from "../Page";
+import { useInput } from "../../Hooks";
+import ZoomedPage from "../ZoomedPage";
 
 import "./LoginPage.css"
 
@@ -35,8 +35,8 @@ function LoginForm(props) {
     return (
         <LoginAreaItem>
         <div className="login-form">
-            <LoginInput type="text" name="id" other={{...props.idUseInput, placeHolder: "아이디"}}></LoginInput>
-            <LoginInput type="password" name="password" other={{...props.passwordUseInput, placeHolder: "비밀번호"}}></LoginInput>
+            <LoginInput type="text" name="id" other={{...props.idUseInput, placeholder: "아이디"}}></LoginInput>
+            <LoginInput type="password" name="password" other={{...props.passwordUseInput, placeholder: "비밀번호"}}></LoginInput>
             <LoginButton/>
         </div>
         </LoginAreaItem>

@@ -1,0 +1,28 @@
+.main {
+    display: grid;
+}
+
+.main-adslider {
+    height: 23vh;
+    overflow: hidden;
+}
+
+.main-adslider img {
+    width: 100vw;
+    animation: main-ad-loading 5s linear normal;
+}
+
+@keyframes main-ad-loading {
+    0% {
+        opacity: 0.5;
+    }
+    15% {
+        opacity: 1;
+    }
+    85% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0.5;
+    }
+}

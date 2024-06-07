@@ -60,13 +60,12 @@ export default function ZoomedPage(props) {
     }
     headerItems[2] = <HeaderTitle title={props.title}/>
 
-    return (<Page>
+    return (<Page key={props.title}>
         <div className="zoomed-page">
             <ZoomedPageHeader items={headerItems}/>
             <div className="zoomed-page-content">
                 {props.children}
             </div>
-            
             <ZoomedPageFooter/>
         </div>
     </Page>)

@@ -37871,13 +37871,23 @@ function Page(props) {
     className: "page"
   }, props.children);
 }
-},{"react":"node_modules/react/index.js","./Page.css":"app/page/Page.css"}],"app/MockServer.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","./Page.css":"app/page/Page.css"}],"public/images/main/slider/0.png":[function(require,module,exports) {
+module.exports = "/0.b433600e.png";
+},{}],"public/images/main/slider/1.png":[function(require,module,exports) {
+module.exports = "/1.6cc889de.png";
+},{}],"public/images/main/slider/2.png":[function(require,module,exports) {
+module.exports = "/2.6609252a.png";
+},{}],"app/MockServer.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = getMockServer;
+var _ = _interopRequireDefault(require("../public/images/main/slider/0.png"));
+var _2 = _interopRequireDefault(require("../public/images/main/slider/1.png"));
+var _3 = _interopRequireDefault(require("../public/images/main/slider/2.png"));
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 /*
 name: 카테고리 이름
 icon: 카테고리 아이콘 url
@@ -37885,6 +37895,17 @@ icon: 카테고리 아이콘 url
 
 */
 
+function newAd(name, img, link) {
+  return {
+    name: name,
+    img: img,
+    link: link
+  };
+}
+var ads = [];
+ads.push(newAd("a", _.default, ""));
+ads.push(newAd("b", _2.default, ""));
+ads.push(newAd("c", _3.default, ""));
 function getMockServer() {
   return {
     getCategories: function getCategories() {
@@ -37904,10 +37925,13 @@ function getMockServer() {
         name: "패션용품"
       });
       return r;
+    },
+    getAds: function getAds() {
+      return ads;
     }
   };
 }
-},{}],"app/context/AppContext.js":[function(require,module,exports) {
+},{"../public/images/main/slider/0.png":"public/images/main/slider/0.png","../public/images/main/slider/1.png":"public/images/main/slider/1.png","../public/images/main/slider/2.png":"public/images/main/slider/2.png"}],"app/context/AppContext.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -38062,21 +38086,70 @@ function StandardPage(props) {
     className: "stdcontent"
   }, props.children), /*#__PURE__*/_react.default.createElement(_Footer.default, null)));
 }
-},{"react":"node_modules/react/index.js","./Page":"app/page/Page.js","./Header":"app/page/Header.js","./Footer":"app/page/Footer.js","./Page.css":"app/page/Page.css"}],"app/page/MainPage.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","./Page":"app/page/Page.js","./Header":"app/page/Header.js","./Footer":"app/page/Footer.js","./Page.css":"app/page/Page.css"}],"app/page/main/MainPage.css":[function(require,module,exports) {
+var reloadCSS = require('_css_loader');
+module.hot.dispose(reloadCSS);
+module.hot.accept(reloadCSS);
+},{"_css_loader":"node_modules/parcel-bundler/src/builtins/css-loader.js"}],"app/page/main/MainPage.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = MainPage;
-var _react = _interopRequireDefault(require("react"));
-var _StandardPage = _interopRequireDefault(require("./StandardPage"));
+var _react = _interopRequireWildcard(require("react"));
+var _StandardPage = _interopRequireDefault(require("../StandardPage"));
+require("./MainPage.css");
+var _AppContext = require("../../context/AppContext");
 function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
+function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
+function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function _slicedToArray(r, e) { return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest(); }
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
+function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
+function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t.return && (u = t.return(), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
+function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
+function AdSlider(props) {
+  var _useState = (0, _react.useState)(0),
+    _useState2 = _slicedToArray(_useState, 2),
+    idx = _useState2[0],
+    setIdx = _useState2[1];
+  var app = (0, _AppContext.useApp)();
+  var ads = app.server.getAds();
+  var ad = ads[idx];
+  var timerTaskId = -1;
+  var component = /*#__PURE__*/_react.default.createElement(MainPageItem, null, /*#__PURE__*/_react.default.createElement("div", {
+    className: "main-adslider"
+  }, /*#__PURE__*/_react.default.createElement("img", {
+    key: ad.name,
+    src: ad.img
+  })));
+  (0, _react.useEffect)(function () {
+    timerTaskId = setInterval(function () {
+      console.log("TICK");
+      setIdx((idx + 1) % ads.length);
+    }, 5000);
+  }, [component]);
+  (0, _react.useEffect)(function () {
+    return function cleanup() {
+      if (timerTaskId != -1) clearInterval(timerTaskId);
+    };
+  });
+  return component;
+}
+function MainPageItem(props) {
+  return /*#__PURE__*/_react.default.createElement("div", {
+    className: "main-item"
+  }, props.children);
+}
 function MainPage(props) {
-  return /*#__PURE__*/_react.default.createElement(_StandardPage.default, null, /*#__PURE__*/_react.default.createElement("h3", null, "\uBA54\uC778\uD398\uC774\uC9C0 \uC785\uB2C8\uB2E4."));
+  return /*#__PURE__*/_react.default.createElement(_StandardPage.default, null, /*#__PURE__*/_react.default.createElement("div", {
+    className: "main"
+  }, /*#__PURE__*/_react.default.createElement(AdSlider, null)), /*#__PURE__*/_react.default.createElement("h3", null, "\uBA54\uC778\uD398\uC774\uC9C0 \uC785\uB2C8\uB2E4."));
 }
 ;
-},{"react":"node_modules/react/index.js","./StandardPage":"app/page/StandardPage.js"}],"app/page/ProductPage.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","../StandardPage":"app/page/StandardPage.js","./MainPage.css":"app/page/main/MainPage.css","../../context/AppContext":"app/context/AppContext.js"}],"app/page/ProductPage.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -38180,7 +38253,9 @@ function ZoomedPage(props) {
   headerItems[2] = /*#__PURE__*/_react.default.createElement(HeaderTitle, {
     title: props.title
   });
-  return /*#__PURE__*/_react.default.createElement(_Page.default, null, /*#__PURE__*/_react.default.createElement("div", {
+  return /*#__PURE__*/_react.default.createElement(_Page.default, {
+    key: props.title
+  }, /*#__PURE__*/_react.default.createElement("div", {
     className: "zoomed-page"
   }, /*#__PURE__*/_react.default.createElement(ZoomedPageHeader, {
     items: headerItems
@@ -38188,11 +38263,11 @@ function ZoomedPage(props) {
     className: "zoomed-page-content"
   }, props.children), /*#__PURE__*/_react.default.createElement(ZoomedPageFooter, null)));
 }
-},{"react":"node_modules/react/index.js","./Page":"app/page/Page.js","react-router-dom":"node_modules/react-router-dom/dist/index.js","../../public/images/icon/back.png":"public/images/icon/back.png","../../public/images/icon/home2.png":"public/images/icon/home2.png"}],"app/page/LoginPage.css":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","./Page":"app/page/Page.js","react-router-dom":"node_modules/react-router-dom/dist/index.js","../../public/images/icon/back.png":"public/images/icon/back.png","../../public/images/icon/home2.png":"public/images/icon/home2.png"}],"app/page/login/LoginPage.css":[function(require,module,exports) {
 var reloadCSS = require('_css_loader');
 module.hot.dispose(reloadCSS);
 module.hot.accept(reloadCSS);
-},{"_css_loader":"node_modules/parcel-bundler/src/builtins/css-loader.js"}],"app/page/LoginPage.js":[function(require,module,exports) {
+},{"_css_loader":"node_modules/parcel-bundler/src/builtins/css-loader.js"}],"app/page/login/LoginPage.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -38201,10 +38276,10 @@ Object.defineProperty(exports, "__esModule", {
 exports.default = LoginPage;
 var _react = _interopRequireDefault(require("react"));
 var _reactRouterDom = require("react-router-dom");
-var _StandardPage = _interopRequireDefault(require("./StandardPage"));
-var _Page = _interopRequireDefault(require("./Page"));
-var _Hooks = require("../Hooks");
-var _ZoomedPage = _interopRequireDefault(require("./ZoomedPage"));
+var _StandardPage = _interopRequireDefault(require("../StandardPage"));
+var _Page = _interopRequireDefault(require("../Page"));
+var _Hooks = require("../../Hooks");
+var _ZoomedPage = _interopRequireDefault(require("../ZoomedPage"));
 require("./LoginPage.css");
 function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
@@ -38237,13 +38312,13 @@ function LoginForm(props) {
     type: "text",
     name: "id",
     other: _objectSpread(_objectSpread({}, props.idUseInput), {}, {
-      placeHolder: "아이디"
+      placeholder: "아이디"
     })
   }), /*#__PURE__*/_react.default.createElement(LoginInput, {
     type: "password",
     name: "password",
     other: _objectSpread(_objectSpread({}, props.passwordUseInput), {}, {
-      placeHolder: "비밀번호"
+      placeholder: "비밀번호"
     })
   }), /*#__PURE__*/_react.default.createElement(LoginButton, null)));
 }
@@ -38266,7 +38341,23 @@ function LoginPage(props) {
     passwordUseInput: passwordInput
   }), /*#__PURE__*/_react.default.createElement(SignupPannel, null)));
 }
-},{"react":"node_modules/react/index.js","react-router-dom":"node_modules/react-router-dom/dist/index.js","./StandardPage":"app/page/StandardPage.js","./Page":"app/page/Page.js","../Hooks":"app/Hooks.js","./ZoomedPage":"app/page/ZoomedPage.js","./LoginPage.css":"app/page/LoginPage.css"}],"app/App.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","react-router-dom":"node_modules/react-router-dom/dist/index.js","../StandardPage":"app/page/StandardPage.js","../Page":"app/page/Page.js","../../Hooks":"app/Hooks.js","../ZoomedPage":"app/page/ZoomedPage.js","./LoginPage.css":"app/page/login/LoginPage.css"}],"app/page/signup/SignupPage.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = SignupPage;
+var _react = _interopRequireDefault(require("react"));
+var _ZoomedPage = _interopRequireDefault(require("../ZoomedPage"));
+require("../Page.css");
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
+function SignupPage(props) {
+  return /*#__PURE__*/_react.default.createElement(_ZoomedPage.default, {
+    title: "\uD68C\uC6D0\uAC00\uC785"
+  });
+}
+},{"react":"node_modules/react/index.js","../ZoomedPage":"app/page/ZoomedPage.js","../Page.css":"app/page/Page.css"}],"app/App.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -38275,10 +38366,11 @@ Object.defineProperty(exports, "__esModule", {
 exports.default = App;
 var _react = _interopRequireDefault(require("react"));
 var _reactRouterDom = require("react-router-dom");
-var _MainPage = _interopRequireDefault(require("./page/MainPage"));
+var _MainPage = _interopRequireDefault(require("./page/main/MainPage"));
 var _ProductPage = _interopRequireDefault(require("./page/ProductPage"));
-var _LoginPage = _interopRequireDefault(require("./page/LoginPage"));
+var _LoginPage = _interopRequireDefault(require("./page/login/LoginPage"));
 var _AppContext = require("./context/AppContext");
+var _SignupPage = _interopRequireDefault(require("./page/signup/SignupPage"));
 function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 function App(props) {
   console.log(_AppContext.AppContext);
@@ -38296,6 +38388,9 @@ function App(props) {
     path: "/login/*",
     element: /*#__PURE__*/_react.default.createElement(_LoginPage.default, null)
   }), /*#__PURE__*/_react.default.createElement(_reactRouterDom.Route, {
+    path: "/signup/*",
+    element: /*#__PURE__*/_react.default.createElement(_SignupPage.default, null)
+  }), /*#__PURE__*/_react.default.createElement(_reactRouterDom.Route, {
     path: "/product/*",
     element: /*#__PURE__*/_react.default.createElement(_ProductPage.default, null)
   }), /*#__PURE__*/_react.default.createElement(_reactRouterDom.Route, {
@@ -38303,7 +38398,7 @@ function App(props) {
     element: /*#__PURE__*/_react.default.createElement(_MainPage.default, null)
   }), " "))));
 }
-},{"react":"node_modules/react/index.js","react-router-dom":"node_modules/react-router-dom/dist/index.js","./page/MainPage":"app/page/MainPage.js","./page/ProductPage":"app/page/ProductPage.js","./page/LoginPage":"app/page/LoginPage.js","./context/AppContext":"app/context/AppContext.js"}],"index.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","react-router-dom":"node_modules/react-router-dom/dist/index.js","./page/main/MainPage":"app/page/main/MainPage.js","./page/ProductPage":"app/page/ProductPage.js","./page/login/LoginPage":"app/page/login/LoginPage.js","./context/AppContext":"app/context/AppContext.js","./page/signup/SignupPage":"app/page/signup/SignupPage.js"}],"index.js":[function(require,module,exports) {
 "use strict";
 
 var _react = _interopRequireDefault(require("react"));
@@ -38338,7 +38433,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "58862" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54091" + '/');
   ws.onmessage = function (event) {
     checkedAssets = {};
     assetsToAccept = [];
