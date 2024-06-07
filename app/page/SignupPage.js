@@ -5,6 +5,6 @@ import "./Page.css"
 
 function SignUpPage(props) {
     return (<Page>
-
+        
     </Page>)
 }

@@ -14,8 +14,7 @@ export default function App(props) {
 						<Route path="/" element={<MainPage />}></Route>
 						<Route path="/main/*" element={<MainPage />}></Route>
 						<Route path="/product/*" element={<ProductPage />}></Route>
-						{/* 상단에 위치하는 라우트들의 규칙을 모두 확인, 일치하는 라우트가 없는경우 처리 */}
-						<Route path="*" element={<MainPage />}></Route>
+						<Route path="*" element={<MainPage />}></Route> {/* Not Found */}
 					</Routes>
 				</AppContext.Provider>
 			</BrowserRouter>

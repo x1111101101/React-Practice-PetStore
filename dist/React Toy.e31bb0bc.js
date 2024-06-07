@@ -37920,7 +37920,11 @@ var AppContextDefault = exports.AppContextDefault = {
 var useApp = exports.useApp = function useApp() {
   return (0, _react.useContext)(AppContext);
 };
-},{"../MockServer":"app/MockServer.js","react":"node_modules/react/index.js"}],"app/page/Header.js":[function(require,module,exports) {
+},{"../MockServer":"app/MockServer.js","react":"node_modules/react/index.js"}],"public/images/icon/search.png":[function(require,module,exports) {
+module.exports = "/search.e85e65b0.png";
+},{}],"public/images/icon/cart.png":[function(require,module,exports) {
+module.exports = "/cart.9f107906.png";
+},{}],"app/page/Header.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -37931,27 +37935,46 @@ var _react = _interopRequireDefault(require("react"));
 var _reactRouterDom = require("react-router-dom");
 var _MockServer = require("../MockServer");
 var _AppContext = require("../context/AppContext");
+var _search = _interopRequireDefault(require("../../public/images/icon/search.png"));
+var _cart = _interopRequireDefault(require("../../public/images/icon/cart.png"));
 require("./Page.css");
 function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 function Category(props) {
   var category = props.category;
+  console.log(category);
   return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("label", {
     className: "categoryName"
   }, category.name));
+}
+function Icon(props) {
+  return /*#__PURE__*/_react.default.createElement("div", {
+    className: "header-icon"
+  }, props.children);
+}
+function SearchButton(props) {
+  return /*#__PURE__*/_react.default.createElement(Icon, null, /*#__PURE__*/_react.default.createElement("img", {
+    src: _search.default
+  }));
+}
+function CartButton(props) {
+  return /*#__PURE__*/_react.default.createElement(Icon, null, /*#__PURE__*/_react.default.createElement("img", {
+    src: _cart.default
+  }));
 }
 function Header(props) {
   var server = (0, _AppContext.useApp)().server;
   var categories = server.getCategories();
   return /*#__PURE__*/_react.default.createElement("div", {
     className: "header"
-  }, categories.map(function (c) {
-    return /*#__PURE__*/_react.default.createElement(Category, {
-      key: c.name,
-      category: c
-    });
-  }));
+  }, /*#__PURE__*/_react.default.createElement("label", null, "Pet Store"), /*#__PURE__*/_react.default.createElement(SearchButton, null), /*#__PURE__*/_react.default.createElement(CartButton, null));
 }
-},{"react":"node_modules/react/index.js","react-router-dom":"node_modules/react-router-dom/dist/index.js","../MockServer":"app/MockServer.js","../context/AppContext":"app/context/AppContext.js","./Page.css":"app/page/Page.css"}],"app/page/Footer.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","react-router-dom":"node_modules/react-router-dom/dist/index.js","../MockServer":"app/MockServer.js","../context/AppContext":"app/context/AppContext.js","../../public/images/icon/search.png":"public/images/icon/search.png","../../public/images/icon/cart.png":"public/images/icon/cart.png","./Page.css":"app/page/Page.css"}],"public/images/icon/items.png":[function(require,module,exports) {
+module.exports = "/items.95515d09.png";
+},{}],"public/images/icon/user.png":[function(require,module,exports) {
+module.exports = "/user.cc76376c.png";
+},{}],"public/images/icon/home.png":[function(require,module,exports) {
+module.exports = "/home.a45f731e.png";
+},{}],"app/page/Footer.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -37960,11 +37983,33 @@ Object.defineProperty(exports, "__esModule", {
 exports.default = Footer;
 var _react = _interopRequireDefault(require("react"));
 require("./Page.css");
+var _items = _interopRequireDefault(require("../../public/images/icon/items.png"));
+var _user = _interopRequireDefault(require("../../public/images/icon/user.png"));
+var _home = _interopRequireDefault(require("../../public/images/icon/home.png"));
 function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
-function Footer(props) {
-  return /*#__PURE__*/_react.default.createElement("div", null, "fOOTER");
+function FooterIcon(props) {
+  return /*#__PURE__*/_react.default.createElement("div", {
+    className: "footer-icon"
+  }, props.children, /*#__PURE__*/_react.default.createElement("label", null, props.iconName));
 }
-},{"react":"node_modules/react/index.js","./Page.css":"app/page/Page.css"}],"app/page/StandardPage.js":[function(require,module,exports) {
+function Footer(props) {
+  return /*#__PURE__*/_react.default.createElement("div", {
+    className: "footer"
+  }, /*#__PURE__*/_react.default.createElement(FooterIcon, {
+    iconName: "\uD648"
+  }, /*#__PURE__*/_react.default.createElement("img", {
+    src: _home.default
+  })), /*#__PURE__*/_react.default.createElement(FooterIcon, {
+    iconName: "\uCE74\uD14C\uACE0\uB9AC"
+  }, /*#__PURE__*/_react.default.createElement("img", {
+    src: _items.default
+  })), /*#__PURE__*/_react.default.createElement(FooterIcon, {
+    iconName: "\uB85C\uADF8\uC778/\uD68C\uC6D0\uAC00\uC785"
+  }, /*#__PURE__*/_react.default.createElement("img", {
+    src: _user.default
+  })));
+}
+},{"react":"node_modules/react/index.js","./Page.css":"app/page/Page.css","../../public/images/icon/items.png":"public/images/icon/items.png","../../public/images/icon/user.png":"public/images/icon/user.png","../../public/images/icon/home.png":"public/images/icon/home.png"}],"app/page/StandardPage.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -38042,7 +38087,7 @@ function App(props) {
   }), /*#__PURE__*/_react.default.createElement(_reactRouterDom.Route, {
     path: "*",
     element: /*#__PURE__*/_react.default.createElement(_MainPage.default, null)
-  })))));
+  }), " "))));
 }
 },{"react":"node_modules/react/index.js","react-router-dom":"node_modules/react-router-dom/dist/index.js","./page/MainPage":"app/page/MainPage.js","./page/ProductPage":"app/page/ProductPage.js","./context/AppContext":"app/context/AppContext.js"}],"index.js":[function(require,module,exports) {
 "use strict";
@@ -38079,7 +38124,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "62063" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54289" + '/');
   ws.onmessage = function (event) {
     checkedAssets = {};
     assetsToAccept = [];

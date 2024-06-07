@@ -7,17 +7,54 @@ html, body {
 .stdpage {
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: 8fr 84fr 8fr;
+    grid-template-rows: 5vh 88vh 7vh;
     height: 100vh;
     margin: 0;
+    overflow: hidden;
+}
+
+.categories-hidden {
+    display: none;
 }
 
 .header {
-    
+    display: grid;
+    padding-left: 1vh;
+    padding-right: 1vh;
+    padding-top: 0.5vh;
+    grid-template-columns: 100fr 1fr 1fr;
+    column-gap: 1vh;
+    border-bottom: 1px solid lightgray;
+    font-weight: bold;
+    font-size: 2.8vh;
+}
+
+.header-icon img {
+    height: 3.7vh;
 }
 
 .footer {
+    border-top: 1px solid lightgray;
+    padding-top: 1vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.footer-icon {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
     
+    text-align: center;
+    align-items: center;
+}
+
+.footer-icon img {
+    height: 3.8vh;
+    max-width: 4vh;
+}
+.footer-icon label {
+    font-size: 1.3vh;
 }
 
 /*# sourceMappingURL=/React%20Toy.e31bb0bc.css.map */
