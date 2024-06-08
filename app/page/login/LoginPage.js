@@ -1,7 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import StandardPage from "../StandardPage";
-import Page from "../Page";
 import { useInput } from "../../Hooks";
 import ZoomedPage from "../ZoomedPage";
 
@@ -11,9 +9,8 @@ function LoginInput(props) {
     return (
         <div className="login-input">
             <input type={props.type} name={props.name} {...props.other}/>
-        </div>
-    
-)
+        </div>   
+    )
 }
 
 function LoginAreaItem(props) {
@@ -45,7 +42,7 @@ function LoginForm(props) {
 
 function SignupPannel(props) {
     return (<LoginAreaItem>
-        <div className="login-signup-pannel">
+        <div className="login-signup-pannel" style={{fontSize: "1rem"}}>
             <label>아이디가 없으신가요?</label><br></br>
             <Link to="/signup">회원가입</Link>
         </div>

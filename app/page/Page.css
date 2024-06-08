@@ -1,9 +1,15 @@
 html, body {
     margin: 0;
-    height: 100%;
+    height: 100vh;
     padding: 0;
     user-select:none;
+    font-family: Noto Sans KR, sans-serif;
 }
+
+img {
+    max-width: 100%;
+}
+
 @keyframes loading {
     0% {
         opacity: 0;
@@ -20,10 +26,18 @@ html, body {
     height: 100vh;
     margin: 0;
     overflow: hidden;
+    box-sizing: border-box;
+}
+
+@media (orientation: landscape) {
+	.stdcontent {
+        width: 50vw;
+    }
 }
 
 .stdcontent {
-    animation: loading 0.5s linear;
+    overflow: auto;
+    animation: loading 0.3s linear;
 }
 
 .zoomed-page {
@@ -31,6 +45,7 @@ html, body {
     grid-template-columns: 1fr;
     grid-template-rows: 5vh 95vh;
     height: 100vh;
+    width: 100vw;
     margin: 0;
 }
 
@@ -38,8 +53,8 @@ html, body {
     animation: loading 0.5s linear;
     margin: auto;
     display: flex;
-    text-align: center;
-    align-items: center;
+    height: 100%;
+    width: 100%;
     flex-wrap: wrap;
 }
 
@@ -74,7 +89,7 @@ html, body {
     padding-left: 1vh;
     padding-right: 1vh;
     padding-top: 0.5vh;
-    grid-template-columns: 100fr 1fr 1fr;
+    grid-template-columns: 10fr 1fr 1fr;
     column-gap: 1vh;
     border-bottom: 1px solid lightgray;
     font-weight: bold;

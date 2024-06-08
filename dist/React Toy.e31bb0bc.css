@@ -1,9 +1,15 @@
 html, body {
     margin: 0;
-    height: 100%;
+    height: 100vh;
     padding: 0;
     user-select:none;
+    font-family: Noto Sans KR, sans-serif;
 }
+
+img {
+    max-width: 100%;
+}
+
 @keyframes loading {
     0% {
         opacity: 0;
@@ -20,10 +26,18 @@ html, body {
     height: 100vh;
     margin: 0;
     overflow: hidden;
+    box-sizing: border-box;
+}
+
+@media (orientation: landscape) {
+	.stdcontent {
+        width: 50vw;
+    }
 }
 
 .stdcontent {
-    animation: loading 0.5s linear;
+    overflow: auto;
+    animation: loading 0.3s linear;
 }
 
 .zoomed-page {
@@ -31,6 +45,7 @@ html, body {
     grid-template-columns: 1fr;
     grid-template-rows: 5vh 95vh;
     height: 100vh;
+    width: 100vw;
     margin: 0;
 }
 
@@ -38,8 +53,8 @@ html, body {
     animation: loading 0.5s linear;
     margin: auto;
     display: flex;
-    text-align: center;
-    align-items: center;
+    height: 100%;
+    width: 100%;
     flex-wrap: wrap;
 }
 
@@ -74,7 +89,7 @@ html, body {
     padding-left: 1vh;
     padding-right: 1vh;
     padding-top: 0.5vh;
-    grid-template-columns: 100fr 1fr 1fr;
+    grid-template-columns: 10fr 1fr 1fr;
     column-gap: 1vh;
     border-bottom: 1px solid lightgray;
     font-weight: bold;
@@ -126,13 +141,27 @@ img:active {
 }
 
 .main-adslider {
+    margin-top: 0.3vh;
     height: 23vh;
     overflow: hidden;
 }
 
 .main-adslider img {
-    width: 100vw;
+    width: 100%;
     animation: main-ad-loading 5s linear normal;
+}
+
+.main-categories {
+    display: grid;
+    grid-template-columns: 80%;
+    box-sizing: border-box;
+    justify-content: center;
+    width: 100%;
+    margin-top: 2.5rem;
+    overflow: hidden;
+}
+.main-category-groups-wrap {
+    width: 100%;
 }
 
 @keyframes main-ad-loading {
@@ -150,10 +179,57 @@ img:active {
     }
 }
 
+.category-icon {
+    display: block;
+    width: 90%;
+    flex-flow: row wrap;
+    align-items: center;
+    align-content: center;
+    box-sizing: border-box;
+    margin: 1vw;
+    padding: 0.3rem;
+}
+
+.category-icon label {
+    display: block;
+    font-size: 0.8rem;
+    text-align: center;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.category-icon-inner {
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    height: 100%;
+}
+
+.category-icon .imgwrap { /* Image */
+    width: 70%;
+    box-sizing: border-box;
+    border: 1px groove lightgray;
+    border-radius: 1rem;
+}
+.category-icon .imgwrap:after {
+    content: "";
+    display: block;
+    padding-bottom: 100%;
+}
+.category-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: 1fr;
+    box-sizing: border-box;
+}
 .login-area {
     display: grid;
     font-size: 2em;
-    grid-template-rows: 2fr 1fr 2fr;
+    grid-template-rows: 2fr 1fr 4fr;
+    text-align: center;
+    padding-top: 7vh;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .login-area-item {
@@ -167,19 +243,21 @@ img:active {
     border-top: 0;
     border-left: 0;
     border-right: 0;
-    width: 60vw;
+    width: 77vw;
     height: 4vh;
-    font-size: 0.7em;
+    font-size: 1rem;
 }
 
 .login-form button {
     margin-top: 3vh;
     width: 100%;
-    font-size: 0.5em;
+    font-size: 1rem;
     padding-top: 1.3vh;
     padding-bottom: 1.3vh;
     color: white;
     background-color: black;
+    border-style: groove;
+    border-radius: 1.5rem;
 }
 
 .login-input {
@@ -197,6 +275,63 @@ img:active {
 }
 .login-signup-pannel a {
     color: inherit;
+}
+.signup-contract {
+    margin-top: 1vh;
+    margin-bottom: 2vh;
+}
+
+.signup {
+    width: 100%;
+}
+
+
+.signup-input-area {
+    margin-top: 1.5vh;
+    display: flex;
+    flex-flow: column wrap;
+    width: 100%;
+    align-items: center;
+}
+
+.signup-input-area label {
+    margin-left: 5%;
+    align-self: baseline;
+    margin-bottom: 0.5vh;
+}
+
+.signup-input-area input[type="text"], .signup-input-area input[type="password"] {
+    width: 90%;
+    height: 4vh;
+    margin-bottom: 1vh;
+    border: 1px groove lightgray;
+    border-radius: 1rem;
+    padding-left: 1rem;
+    font-size: 1rem;
+}
+
+.signup-contract-content {
+    display: block;
+    border: 1px solid black;
+    padding: 1vw;
+    width: 80vw;
+    margin-bottom: 0.3vh;
+}
+
+.signup-contract-tab {
+    display: flex;
+    text-align: center;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+    flex-direction: column;
+    width: 80vw;
+    justify-content: flex-start;
+}
+
+input[type=checkbox] {
+    width: 2vw;
+    height: 2vw;
 }
 
 /*# sourceMappingURL=/React%20Toy.e31bb0bc.css.map */

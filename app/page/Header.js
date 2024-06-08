@@ -4,6 +4,7 @@ import { newMockServer } from '../MockServer';
 import { useApp } from '../context/AppContext';
 import searchImage from '../../public/images/icon/search.png'; 
 import cartImage from '../../public/images/icon/cart.png'; 
+import Img from '../component/Img';
 
 import "./Page.css"
 
@@ -37,7 +38,6 @@ function CartButton(props) {
 
 export default function Header(props) {
     let server = useApp().server
-    let categories = server.getCategories()
     return (
         <div className="header">
             <label>Pet Store</label>

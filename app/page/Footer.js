@@ -19,7 +19,7 @@ export default function Footer(props) {
     let [userIconPath, userIconName] = (!app.isLoggedIn) ? ["/login", "로그인/회원가입"] : ["/my", "마이페이지"]
     return (<div className="footer">
         <FooterIcon linkTo="/main" iconName="홈"><img src={IMG_HOME}></img></FooterIcon>
-        <FooterIcon linkTo="/main" iconName="카테고리"><img src={IMG_CATEGORY}></img></FooterIcon>
+        <FooterIcon linkTo="/category" iconName="카테고리"><img src={IMG_CATEGORY}></img></FooterIcon>
         <FooterIcon linkTo={userIconPath} iconName={userIconName}><img src={IMG_USER}></img></FooterIcon>
     </div>)
 }

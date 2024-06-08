@@ -1,0 +1,57 @@
+.signup-contract {
+    margin-top: 1vh;
+    margin-bottom: 2vh;
+}
+
+.signup {
+    width: 100%;
+}
+
+
+.signup-input-area {
+    margin-top: 1.5vh;
+    display: flex;
+    flex-flow: column wrap;
+    width: 100%;
+    align-items: center;
+}
+
+.signup-input-area label {
+    margin-left: 5%;
+    align-self: baseline;
+    margin-bottom: 0.5vh;
+}
+
+.signup-input-area input[type="text"], .signup-input-area input[type="password"] {
+    width: 90%;
+    height: 4vh;
+    margin-bottom: 1vh;
+    border: 1px groove lightgray;
+    border-radius: 1rem;
+    padding-left: 1rem;
+    font-size: 1rem;
+}
+
+.signup-contract-content {
+    display: block;
+    border: 1px solid black;
+    padding: 1vw;
+    width: 80vw;
+    margin-bottom: 0.3vh;
+}
+
+.signup-contract-tab {
+    display: flex;
+    text-align: center;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+    flex-direction: column;
+    width: 80vw;
+    justify-content: flex-start;
+}
+
+input[type=checkbox] {
+    width: 2vw;
+    height: 2vw;
+}

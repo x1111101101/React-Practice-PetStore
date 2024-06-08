@@ -3,13 +3,27 @@
 }
 
 .main-adslider {
+    margin-top: 0.3vh;
     height: 23vh;
     overflow: hidden;
 }
 
 .main-adslider img {
-    width: 100vw;
+    width: 100%;
     animation: main-ad-loading 5s linear normal;
+}
+
+.main-categories {
+    display: grid;
+    grid-template-columns: 80%;
+    box-sizing: border-box;
+    justify-content: center;
+    width: 100%;
+    margin-top: 2.5rem;
+    overflow: hidden;
+}
+.main-category-groups-wrap {
+    width: 100%;
 }
 
 @keyframes main-ad-loading {

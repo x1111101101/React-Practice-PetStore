@@ -1,7 +1,11 @@
 .login-area {
     display: grid;
     font-size: 2em;
-    grid-template-rows: 2fr 1fr 2fr;
+    grid-template-rows: 2fr 1fr 4fr;
+    text-align: center;
+    padding-top: 7vh;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .login-area-item {
@@ -15,19 +19,21 @@
     border-top: 0;
     border-left: 0;
     border-right: 0;
-    width: 60vw;
+    width: 77vw;
     height: 4vh;
-    font-size: 0.7em;
+    font-size: 1rem;
 }
 
 .login-form button {
     margin-top: 3vh;
     width: 100%;
-    font-size: 0.5em;
+    font-size: 1rem;
     padding-top: 1.3vh;
     padding-bottom: 1.3vh;
     color: white;
     background-color: black;
+    border-style: groove;
+    border-radius: 1.5rem;
 }
 
 .login-input {

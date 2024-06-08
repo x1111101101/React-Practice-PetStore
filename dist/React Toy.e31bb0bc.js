@@ -37871,12 +37871,12 @@ function Page(props) {
     className: "page"
   }, props.children);
 }
-},{"react":"node_modules/react/index.js","./Page.css":"app/page/Page.css"}],"public/images/main/slider/0.png":[function(require,module,exports) {
-module.exports = "/0.b433600e.png";
-},{}],"public/images/main/slider/1.png":[function(require,module,exports) {
-module.exports = "/1.6cc889de.png";
-},{}],"public/images/main/slider/2.png":[function(require,module,exports) {
-module.exports = "/2.6609252a.png";
+},{"react":"node_modules/react/index.js","./Page.css":"app/page/Page.css"}],"public/images/main/slider/a.png":[function(require,module,exports) {
+module.exports = "/a.384dc451.png";
+},{}],"public/images/main/slider/b.png":[function(require,module,exports) {
+module.exports = "/b.e7ca9e9b.png";
+},{}],"public/images/main/slider/c.png":[function(require,module,exports) {
+module.exports = "/c.ccec8525.png";
 },{}],"app/MockServer.js":[function(require,module,exports) {
 "use strict";
 
@@ -37884,9 +37884,9 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = getMockServer;
-var _ = _interopRequireDefault(require("../public/images/main/slider/0.png"));
-var _2 = _interopRequireDefault(require("../public/images/main/slider/1.png"));
-var _3 = _interopRequireDefault(require("../public/images/main/slider/2.png"));
+var _a = _interopRequireDefault(require("../public/images/main/slider/a.png"));
+var _b = _interopRequireDefault(require("../public/images/main/slider/b.png"));
+var _c = _interopRequireDefault(require("../public/images/main/slider/c.png"));
 function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 /*
 name: 카테고리 이름
@@ -37903,35 +37903,17 @@ function newAd(name, img, link) {
   };
 }
 var ads = [];
-ads.push(newAd("a", _.default, ""));
-ads.push(newAd("b", _2.default, ""));
-ads.push(newAd("c", _3.default, ""));
+ads.push(newAd("a", _a.default, ""));
+ads.push(newAd("b", _b.default, ""));
+ads.push(newAd("c", _c.default, ""));
 function getMockServer() {
   return {
-    getCategories: function getCategories() {
-      var r = [];
-      r.push({
-        name: "간식",
-        list: ["덴탈껌", "껌", "영양/기능"]
-      });
-      r.push({
-        name: "사료",
-        list: ["건식", "습식", "자연식"]
-      });
-      r.push({
-        name: "미용용품"
-      });
-      r.push({
-        name: "패션용품"
-      });
-      return r;
-    },
     getAds: function getAds() {
       return ads;
     }
   };
 }
-},{"../public/images/main/slider/0.png":"public/images/main/slider/0.png","../public/images/main/slider/1.png":"public/images/main/slider/1.png","../public/images/main/slider/2.png":"public/images/main/slider/2.png"}],"app/context/AppContext.js":[function(require,module,exports) {
+},{"../public/images/main/slider/a.png":"public/images/main/slider/a.png","../public/images/main/slider/b.png":"public/images/main/slider/b.png","../public/images/main/slider/c.png":"public/images/main/slider/c.png"}],"app/context/AppContext.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -37957,7 +37939,26 @@ var useApp = exports.useApp = function useApp() {
 module.exports = "/search.e85e65b0.png";
 },{}],"public/images/icon/cart.png":[function(require,module,exports) {
 module.exports = "/cart.9f107906.png";
-},{}],"app/page/Header.js":[function(require,module,exports) {
+},{}],"app/component/Img.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = Img;
+var _react = _interopRequireDefault(require("react"));
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
+function Img(props) {
+  return /*#__PURE__*/_react.default.createElement("div", {
+    className: "imgwrap",
+    style: {
+      background: "url(" + props.src + ") no-repeat",
+      backgroundSize: "contain",
+      backgroundPosition: "center"
+    }
+  });
+}
+},{"react":"node_modules/react/index.js"}],"app/page/Header.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -37970,6 +37971,7 @@ var _MockServer = require("../MockServer");
 var _AppContext = require("../context/AppContext");
 var _search = _interopRequireDefault(require("../../public/images/icon/search.png"));
 var _cart = _interopRequireDefault(require("../../public/images/icon/cart.png"));
+var _Img = _interopRequireDefault(require("../component/Img"));
 require("./Page.css");
 function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 function Category(props) {
@@ -37998,12 +38000,11 @@ function CartButton(props) {
 }
 function Header(props) {
   var server = (0, _AppContext.useApp)().server;
-  var categories = server.getCategories();
   return /*#__PURE__*/_react.default.createElement("div", {
     className: "header"
   }, /*#__PURE__*/_react.default.createElement("label", null, "Pet Store"), /*#__PURE__*/_react.default.createElement(SearchButton, null), /*#__PURE__*/_react.default.createElement(CartButton, null));
 }
-},{"react":"node_modules/react/index.js","react-router-dom":"node_modules/react-router-dom/dist/index.js","../MockServer":"app/MockServer.js","../context/AppContext":"app/context/AppContext.js","../../public/images/icon/search.png":"public/images/icon/search.png","../../public/images/icon/cart.png":"public/images/icon/cart.png","./Page.css":"app/page/Page.css"}],"public/images/icon/items.png":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","react-router-dom":"node_modules/react-router-dom/dist/index.js","../MockServer":"app/MockServer.js","../context/AppContext":"app/context/AppContext.js","../../public/images/icon/search.png":"public/images/icon/search.png","../../public/images/icon/cart.png":"public/images/icon/cart.png","../component/Img":"app/component/Img.js","./Page.css":"app/page/Page.css"}],"public/images/icon/items.png":[function(require,module,exports) {
 module.exports = "/items.95515d09.png";
 },{}],"public/images/icon/user.png":[function(require,module,exports) {
 module.exports = "/user.cc76376c.png";
@@ -38055,7 +38056,7 @@ function Footer(props) {
   }, /*#__PURE__*/_react.default.createElement("img", {
     src: _home.default
   })), /*#__PURE__*/_react.default.createElement(FooterIcon, {
-    linkTo: "/main",
+    linkTo: "/category",
     iconName: "\uCE74\uD14C\uACE0\uB9AC"
   }, /*#__PURE__*/_react.default.createElement("img", {
     src: _items.default
@@ -38090,17 +38091,94 @@ function StandardPage(props) {
 var reloadCSS = require('_css_loader');
 module.hot.dispose(reloadCSS);
 module.hot.accept(reloadCSS);
-},{"_css_loader":"node_modules/parcel-bundler/src/builtins/css-loader.js"}],"app/page/main/MainPage.js":[function(require,module,exports) {
+},{"_css_loader":"node_modules/parcel-bundler/src/builtins/css-loader.js"}],"app/component/category/Category.css":[function(require,module,exports) {
+var reloadCSS = require('_css_loader');
+module.hot.dispose(reloadCSS);
+module.hot.accept(reloadCSS);
+},{"_css_loader":"node_modules/parcel-bundler/src/builtins/css-loader.js"}],"public/images/icon/category/meal.png":[function(require,module,exports) {
+module.exports = "/meal.22f29d72.png";
+},{}],"public/images/icon/category/a.png":[function(require,module,exports) {
+module.exports = "/a.567a6c21.png";
+},{}],"public/images/icon/category/b.png":[function(require,module,exports) {
+module.exports = "/b.71a46dd5.png";
+},{}],"public/images/icon/category/f.png":[function(require,module,exports) {
+module.exports = "/f.d2193c37.png";
+},{}],"public/images/icon/category/e.png":[function(require,module,exports) {
+module.exports = "/e.df29c38f.png";
+},{}],"public/images/icon/category/x.png":[function(require,module,exports) {
+module.exports = "/x.76e22ae4.png";
+},{}],"public/images/icon/category/k.png":[function(require,module,exports) {
+module.exports = "/k.ae31e287.png";
+},{}],"public/images/icon/category/h.png":[function(require,module,exports) {
+module.exports = "/h.14350fbe.png";
+},{}],"app/component/category/Category.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+exports.CATEGORIES = void 0;
+exports.CategoryGroup = CategoryGroup;
+exports.CategoryIcon = CategoryIcon;
+var _react = _interopRequireDefault(require("react"));
+var _reactRouterDom = require("react-router-dom");
+var _Img = _interopRequireDefault(require("../Img"));
+require("./Category.css");
+require("../../page/Page.css");
+var _meal = _interopRequireDefault(require("../../../public/images/icon/category/meal.png"));
+var _a = _interopRequireDefault(require("../../../public/images/icon/category/a.png"));
+var _b = _interopRequireDefault(require("../../../public/images/icon/category/b.png"));
+var _f = _interopRequireDefault(require("../../../public/images/icon/category/f.png"));
+var _e = _interopRequireDefault(require("../../../public/images/icon/category/e.png"));
+var _x = _interopRequireDefault(require("../../../public/images/icon/category/x.png"));
+var _k = _interopRequireDefault(require("../../../public/images/icon/category/k.png"));
+var _h = _interopRequireDefault(require("../../../public/images/icon/category/h.png"));
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
+var CATEGORIES = exports.CATEGORIES = {};
+function newCategory(name, img, path) {
+  return {
+    name: name,
+    img: img,
+    path: path
+  };
+}
+CATEGORIES["사료"] = newCategory("사료", _meal.default, "");
+CATEGORIES["간식"] = newCategory("간식", _a.default, "");
+CATEGORIES["장난감"] = newCategory("장난감", _b.default, "");
+CATEGORIES["악세사리"] = newCategory("악세사리", _x.default, "");
+CATEGORIES["미용품"] = newCategory("미용품", _e.default, "");
+CATEGORIES["의약품"] = newCategory("의약품", _f.default, "");
+CATEGORIES["펫하우스"] = newCategory("펫하우스", _h.default, "");
+CATEGORIES["목욕용품"] = newCategory("목욕용품", _k.default, "");
+function CategoryGroup(props) {
+  return /*#__PURE__*/_react.default.createElement("div", {
+    className: "category-row"
+  }, props.children);
+}
+function CategoryIcon(props) {
+  var category = props.category;
+  return /*#__PURE__*/_react.default.createElement("div", {
+    className: "category-icon"
+  }, /*#__PURE__*/_react.default.createElement("div", {
+    to: category.path,
+    className: "category-icon-inner a-none-decoration"
+  }, /*#__PURE__*/_react.default.createElement(_Img.default, {
+    src: category.img
+  }), /*#__PURE__*/_react.default.createElement("label", null, category.name)));
+}
+},{"react":"node_modules/react/index.js","react-router-dom":"node_modules/react-router-dom/dist/index.js","../Img":"app/component/Img.js","./Category.css":"app/component/category/Category.css","../../page/Page.css":"app/page/Page.css","../../../public/images/icon/category/meal.png":"public/images/icon/category/meal.png","../../../public/images/icon/category/a.png":"public/images/icon/category/a.png","../../../public/images/icon/category/b.png":"public/images/icon/category/b.png","../../../public/images/icon/category/f.png":"public/images/icon/category/f.png","../../../public/images/icon/category/e.png":"public/images/icon/category/e.png","../../../public/images/icon/category/x.png":"public/images/icon/category/x.png","../../../public/images/icon/category/k.png":"public/images/icon/category/k.png","../../../public/images/icon/category/h.png":"public/images/icon/category/h.png"}],"app/page/main/MainPage.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.Categories = Categories;
 exports.default = MainPage;
 var _react = _interopRequireWildcard(require("react"));
 var _StandardPage = _interopRequireDefault(require("../StandardPage"));
 require("./MainPage.css");
 var _AppContext = require("../../context/AppContext");
+var _Category = require("../../component/category/Category");
 function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
 function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
@@ -38110,6 +38188,20 @@ function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) 
 function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
 function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t.return && (u = t.return(), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
 function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
+function AdSlide(props) {
+  var ad = props.ad;
+  var display = props.active ? "block" : "none";
+  return /*#__PURE__*/_react.default.createElement("div", {
+    className: "main-ad"
+  }, /*#__PURE__*/_react.default.createElement("img", {
+    loading: "lazy",
+    key: ad.name,
+    src: ad.img,
+    style: {
+      display: display
+    }
+  }));
+}
 function AdSlider(props) {
   var _useState = (0, _react.useState)(0),
     _useState2 = _slicedToArray(_useState, 2),
@@ -38117,14 +38209,19 @@ function AdSlider(props) {
     setIdx = _useState2[1];
   var app = (0, _AppContext.useApp)();
   var ads = app.server.getAds();
-  var ad = ads[idx];
+  var adElements = [];
+  for (var i in ads) {
+    var ad = ads[i];
+    adElements.push( /*#__PURE__*/_react.default.createElement(AdSlide, {
+      key: ad.name,
+      ad: ad,
+      active: parseInt(i) == idx
+    }));
+  }
   var timerTaskId = -1;
   var component = /*#__PURE__*/_react.default.createElement(MainPageItem, null, /*#__PURE__*/_react.default.createElement("div", {
     className: "main-adslider"
-  }, /*#__PURE__*/_react.default.createElement("img", {
-    key: ad.name,
-    src: ad.img
-  })));
+  }, adElements));
   (0, _react.useEffect)(function () {
     timerTaskId = setInterval(function () {
       console.log("TICK");
@@ -38138,6 +38235,31 @@ function AdSlider(props) {
   });
   return component;
 }
+function Categories(props) {
+  return /*#__PURE__*/_react.default.createElement(MainPageItem, null, /*#__PURE__*/_react.default.createElement("div", {
+    className: "main-categories"
+  }, /*#__PURE__*/_react.default.createElement("div", {
+    className: "main-category-groups-wrap"
+  }, /*#__PURE__*/_react.default.createElement(_Category.CategoryGroup, null, /*#__PURE__*/_react.default.createElement(_Category.CategoryIcon, {
+    category: _Category.CATEGORIES["사료"]
+  }), /*#__PURE__*/_react.default.createElement(_Category.CategoryIcon, {
+    category: _Category.CATEGORIES["간식"]
+  }), /*#__PURE__*/_react.default.createElement(_Category.CategoryIcon, {
+    category: _Category.CATEGORIES["장난감"]
+  }), /*#__PURE__*/_react.default.createElement(_Category.CategoryIcon, {
+    category: _Category.CATEGORIES["미용품"]
+  }))), /*#__PURE__*/_react.default.createElement("div", {
+    className: "main-category-groups-wrap"
+  }, /*#__PURE__*/_react.default.createElement(_Category.CategoryGroup, null, /*#__PURE__*/_react.default.createElement(_Category.CategoryIcon, {
+    category: _Category.CATEGORIES["악세사리"]
+  }), /*#__PURE__*/_react.default.createElement(_Category.CategoryIcon, {
+    category: _Category.CATEGORIES["의약품"]
+  }), /*#__PURE__*/_react.default.createElement(_Category.CategoryIcon, {
+    category: _Category.CATEGORIES["목욕용품"]
+  }), /*#__PURE__*/_react.default.createElement(_Category.CategoryIcon, {
+    category: _Category.CATEGORIES["펫하우스"]
+  })))));
+}
 function MainPageItem(props) {
   return /*#__PURE__*/_react.default.createElement("div", {
     className: "main-item"
@@ -38146,10 +38268,10 @@ function MainPageItem(props) {
 function MainPage(props) {
   return /*#__PURE__*/_react.default.createElement(_StandardPage.default, null, /*#__PURE__*/_react.default.createElement("div", {
     className: "main"
-  }, /*#__PURE__*/_react.default.createElement(AdSlider, null)), /*#__PURE__*/_react.default.createElement("h3", null, "\uBA54\uC778\uD398\uC774\uC9C0 \uC785\uB2C8\uB2E4."));
+  }, /*#__PURE__*/_react.default.createElement(AdSlider, null), /*#__PURE__*/_react.default.createElement(Categories, null)));
 }
 ;
-},{"react":"node_modules/react/index.js","../StandardPage":"app/page/StandardPage.js","./MainPage.css":"app/page/main/MainPage.css","../../context/AppContext":"app/context/AppContext.js"}],"app/page/ProductPage.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","../StandardPage":"app/page/StandardPage.js","./MainPage.css":"app/page/main/MainPage.css","../../context/AppContext":"app/context/AppContext.js","../../component/category/Category":"app/component/category/Category.js"}],"app/page/ProductPage.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -38276,8 +38398,6 @@ Object.defineProperty(exports, "__esModule", {
 exports.default = LoginPage;
 var _react = _interopRequireDefault(require("react"));
 var _reactRouterDom = require("react-router-dom");
-var _StandardPage = _interopRequireDefault(require("../StandardPage"));
-var _Page = _interopRequireDefault(require("../Page"));
 var _Hooks = require("../../Hooks");
 var _ZoomedPage = _interopRequireDefault(require("../ZoomedPage"));
 require("./LoginPage.css");
@@ -38324,7 +38444,10 @@ function LoginForm(props) {
 }
 function SignupPannel(props) {
   return /*#__PURE__*/_react.default.createElement(LoginAreaItem, null, /*#__PURE__*/_react.default.createElement("div", {
-    className: "login-signup-pannel"
+    className: "login-signup-pannel",
+    style: {
+      fontSize: "1rem"
+    }
   }, /*#__PURE__*/_react.default.createElement("label", null, "\uC544\uC774\uB514\uAC00 \uC5C6\uC73C\uC2E0\uAC00\uC694?"), /*#__PURE__*/_react.default.createElement("br", null), /*#__PURE__*/_react.default.createElement(_reactRouterDom.Link, {
     to: "/signup"
   }, "\uD68C\uC6D0\uAC00\uC785")));
@@ -38341,23 +38464,172 @@ function LoginPage(props) {
     passwordUseInput: passwordInput
   }), /*#__PURE__*/_react.default.createElement(SignupPannel, null)));
 }
-},{"react":"node_modules/react/index.js","react-router-dom":"node_modules/react-router-dom/dist/index.js","../StandardPage":"app/page/StandardPage.js","../Page":"app/page/Page.js","../../Hooks":"app/Hooks.js","../ZoomedPage":"app/page/ZoomedPage.js","./LoginPage.css":"app/page/login/LoginPage.css"}],"app/page/signup/SignupPage.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","react-router-dom":"node_modules/react-router-dom/dist/index.js","../../Hooks":"app/Hooks.js","../ZoomedPage":"app/page/ZoomedPage.js","./LoginPage.css":"app/page/login/LoginPage.css"}],"app/page/signup/SignupPage.css":[function(require,module,exports) {
+var reloadCSS = require('_css_loader');
+module.hot.dispose(reloadCSS);
+module.hot.accept(reloadCSS);
+},{"_css_loader":"node_modules/parcel-bundler/src/builtins/css-loader.js"}],"app/page/signup/SignupPage.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = SignupPage;
-var _react = _interopRequireDefault(require("react"));
+var _react = _interopRequireWildcard(require("react"));
 var _ZoomedPage = _interopRequireDefault(require("../ZoomedPage"));
+var _Hooks = require("../../Hooks");
 require("../Page.css");
+require("./SignupPage.css");
 function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
-function SignupPage(props) {
-  return /*#__PURE__*/_react.default.createElement(_ZoomedPage.default, {
-    title: "\uD68C\uC6D0\uAC00\uC785"
+function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
+function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
+function _slicedToArray(r, e) { return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest(); }
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
+function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
+function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t.return && (u = t.return(), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
+function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
+function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
+function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), !0).forEach(function (r) { _defineProperty(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
+function _defineProperty(e, r, t) { return (r = _toPropertyKey(r)) in e ? Object.defineProperty(e, r, { value: t, enumerable: !0, configurable: !0, writable: !0 }) : e[r] = t, e; }
+function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : i + ""; }
+function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
+function InputArea(props) {
+  return /*#__PURE__*/_react.default.createElement("div", {
+    className: "signup-input-area"
+  }, /*#__PURE__*/_react.default.createElement("label", null, props.name), props.children);
+}
+function Contract(props) {
+  return /*#__PURE__*/_react.default.createElement("div", {
+    className: "signup-contract"
   });
 }
-},{"react":"node_modules/react/index.js","../ZoomedPage":"app/page/ZoomedPage.js","../Page.css":"app/page/Page.css"}],"app/App.js":[function(require,module,exports) {
+function Input(props) {
+  return /*#__PURE__*/_react.default.createElement("input", props.attr);
+}
+function NameInputArea(props) {
+  return /*#__PURE__*/_react.default.createElement(InputArea, {
+    name: "\uC774\uB984"
+  }, /*#__PURE__*/_react.default.createElement(Input, {
+    attr: _objectSpread({
+      name: "name",
+      type: "text",
+      placeholder: "이름"
+    }, props.attr)
+  }));
+}
+function NicknameInputArea(props) {
+  return /*#__PURE__*/_react.default.createElement(InputArea, {
+    name: "\uB2C9\uB124\uC784"
+  }, /*#__PURE__*/_react.default.createElement(Input, {
+    attr: _objectSpread({
+      name: "nickname",
+      type: "text",
+      placeholder: "닉네임"
+    }, props.attr)
+  }));
+}
+function IdInputArea(props) {
+  return /*#__PURE__*/_react.default.createElement(InputArea, {
+    name: "\uC544\uC774\uB514"
+  }, /*#__PURE__*/_react.default.createElement(Input, {
+    attr: _objectSpread({
+      name: "id",
+      type: "text",
+      placeholder: "영문/숫자 8~20자"
+    }, props.attr)
+  }));
+}
+function PasswordInputArea(props) {
+  return /*#__PURE__*/_react.default.createElement(InputArea, {
+    name: "\uBE44\uBC00\uBC88\uD638"
+  }, /*#__PURE__*/_react.default.createElement(Input, {
+    attr: _objectSpread({
+      name: "password",
+      type: "password",
+      placeholder: "영문/숫자/특수문자 혼합 8~20자"
+    }, props.attrPassword)
+  }), /*#__PURE__*/_react.default.createElement(Input, {
+    attr: _objectSpread({
+      name: "passwordCheck",
+      type: "password",
+      placeholder: "비밀번호를 한번 더 입력해주세요"
+    }, props.attrPasswordCheck)
+  }));
+}
+function ContractTab(props) {
+  var agreeA = (0, _Hooks.useInput)(false);
+  return /*#__PURE__*/_react.default.createElement("div", {
+    className: "signup-contract-tab"
+  });
+}
+function SignupPage(props) {
+  var _useState = (0, _react.useState)({
+      id: '',
+      password: '',
+      passwordCheck: '',
+      name: '',
+      nickname: ''
+    }),
+    _useState2 = _slicedToArray(_useState, 2),
+    inputs = _useState2[0],
+    setInputs = _useState2[1];
+  var onChange = function onChange(e) {
+    var name = e.target.name;
+    var value = e.target.value;
+    var newInputs = _objectSpread({}, inputs);
+    newInputs[name] = value;
+    setInputs(newInputs);
+  };
+  return /*#__PURE__*/_react.default.createElement(_ZoomedPage.default, {
+    title: "\uD68C\uC6D0\uAC00\uC785"
+  }, /*#__PURE__*/_react.default.createElement("div", {
+    className: "signup"
+  }, /*#__PURE__*/_react.default.createElement(IdInputArea, {
+    attr: {
+      onChange: onChange,
+      value: inputs.id
+    }
+  }), /*#__PURE__*/_react.default.createElement(PasswordInputArea, {
+    attrPassword: {
+      onChange: onChange,
+      value: inputs.password
+    },
+    attrPasswordCheck: {
+      onChange: onChange,
+      value: inputs.passwordCheck
+    }
+  }), /*#__PURE__*/_react.default.createElement(NameInputArea, {
+    attr: {
+      onChange: onChange,
+      value: inputs.name
+    }
+  }), /*#__PURE__*/_react.default.createElement(NicknameInputArea, {
+    attr: {
+      onChange: onChange,
+      value: inputs.nickname
+    }
+  }), /*#__PURE__*/_react.default.createElement(ContractTab, null)));
+}
+},{"react":"node_modules/react/index.js","../ZoomedPage":"app/page/ZoomedPage.js","../../Hooks":"app/Hooks.js","../Page.css":"app/page/Page.css","./SignupPage.css":"app/page/signup/SignupPage.css"}],"app/page/category/CategoryPage.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = CategoryPage;
+var _react = _interopRequireWildcard(require("react"));
+var _StandardPage = _interopRequireDefault(require("../StandardPage"));
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
+function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
+function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function CategoryPage(props) {
+  return /*#__PURE__*/_react.default.createElement(_StandardPage.default, null, /*#__PURE__*/_react.default.createElement("div", {
+    className: "page-category"
+  }));
+}
+},{"react":"node_modules/react/index.js","../StandardPage":"app/page/StandardPage.js"}],"app/App.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -38371,6 +38643,7 @@ var _ProductPage = _interopRequireDefault(require("./page/ProductPage"));
 var _LoginPage = _interopRequireDefault(require("./page/login/LoginPage"));
 var _AppContext = require("./context/AppContext");
 var _SignupPage = _interopRequireDefault(require("./page/signup/SignupPage"));
+var _CategoryPage = _interopRequireDefault(require("./page/category/CategoryPage"));
 function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 function App(props) {
   console.log(_AppContext.AppContext);
@@ -38385,6 +38658,9 @@ function App(props) {
     path: "/main/*",
     element: /*#__PURE__*/_react.default.createElement(_MainPage.default, null)
   }), /*#__PURE__*/_react.default.createElement(_reactRouterDom.Route, {
+    path: "/category/*",
+    element: /*#__PURE__*/_react.default.createElement(_CategoryPage.default, null)
+  }), /*#__PURE__*/_react.default.createElement(_reactRouterDom.Route, {
     path: "/login/*",
     element: /*#__PURE__*/_react.default.createElement(_LoginPage.default, null)
   }), /*#__PURE__*/_react.default.createElement(_reactRouterDom.Route, {
@@ -38398,7 +38674,7 @@ function App(props) {
     element: /*#__PURE__*/_react.default.createElement(_MainPage.default, null)
   }), " "))));
 }
-},{"react":"node_modules/react/index.js","react-router-dom":"node_modules/react-router-dom/dist/index.js","./page/main/MainPage":"app/page/main/MainPage.js","./page/ProductPage":"app/page/ProductPage.js","./page/login/LoginPage":"app/page/login/LoginPage.js","./context/AppContext":"app/context/AppContext.js","./page/signup/SignupPage":"app/page/signup/SignupPage.js"}],"index.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","react-router-dom":"node_modules/react-router-dom/dist/index.js","./page/main/MainPage":"app/page/main/MainPage.js","./page/ProductPage":"app/page/ProductPage.js","./page/login/LoginPage":"app/page/login/LoginPage.js","./context/AppContext":"app/context/AppContext.js","./page/signup/SignupPage":"app/page/signup/SignupPage.js","./page/category/CategoryPage":"app/page/category/CategoryPage.js"}],"index.js":[function(require,module,exports) {
 "use strict";
 
 var _react = _interopRequireDefault(require("react"));
@@ -38433,7 +38709,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54091" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "64459" + '/');
   ws.onmessage = function (event) {
     checkedAssets = {};
     assetsToAccept = [];

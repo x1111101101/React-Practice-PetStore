@@ -1,0 +1,43 @@
+.category-icon {
+    display: block;
+    width: 90%;
+    flex-flow: row wrap;
+    align-items: center;
+    align-content: center;
+    box-sizing: border-box;
+    margin: 1vw;
+    padding: 0.3rem;
+}
+
+.category-icon label {
+    display: block;
+    font-size: 0.8rem;
+    text-align: center;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.category-icon-inner {
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    height: 100%;
+}
+
+.category-icon .imgwrap { /* Image */
+    width: 70%;
+    box-sizing: border-box;
+    border: 1px groove lightgray;
+    border-radius: 1rem;
+}
+.category-icon .imgwrap:after {
+    content: "";
+    display: block;
+    padding-bottom: 100%;
+}
+.category-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: 1fr;
+    box-sizing: border-box;
+}
