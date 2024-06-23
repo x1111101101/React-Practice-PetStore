@@ -8,7 +8,7 @@ import IMG_HOME from "../../public/images/icon/home2.png"
 
 function HeaderItem(props) {
     return (
-        <div className="zoomed-page-header-item">
+        <div className="zoomed-page-header-item" {...props.attr}>
             {props.children}
         </div>
     )
@@ -31,6 +31,14 @@ function BackwardIcon(props) {
     )
 }
 
+function ZoomedPageHeaderLeft(props) {
+    return (
+        <div className="zoomed-page-header-left">
+            <BackwardIcon/><HomeIcon/>
+        </div>
+    )
+}
+
 function ZoomedPageHeader(props) {
     return (<div className="zoomed-page-header">
         {props.items}
@@ -45,7 +53,7 @@ function ZoomedPageFooter(props) {
 
 function HeaderTitle(props) {
     return (
-        <HeaderItem>
+        <HeaderItem attr={{style: {alignSelf: "center"}}}>
             <label>
                 {props.title}
             </label>
@@ -54,12 +62,7 @@ function HeaderTitle(props) {
 }
 
 export default function ZoomedPage(props) {
-    let headerItems = [<BackwardIcon/>, <HomeIcon/>]
-    for(let i = 3; i<5; i++) {
-        headerItems.push(<div></div>)
-    }
-    headerItems[2] = <HeaderTitle title={props.title}/>
-
+    let headerItems = [<ZoomedPageHeaderLeft/>, <HeaderTitle title={props.title}/>]
     return (<Page key={props.title}>
         <div className="zoomed-page">
             <ZoomedPageHeader items={headerItems}/>

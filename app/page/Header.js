@@ -41,9 +41,9 @@ export default function Header(props) {
     return (
         <div className="header">
             <label>Pet Store</label>
-            <SearchButton/>
-            <CartButton/>
-            
+            <div className="header-right">
+                <SearchButton/><CartButton/>
+            </div>
         </div>
     );
 }

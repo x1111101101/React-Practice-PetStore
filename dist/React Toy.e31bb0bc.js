@@ -38002,7 +38002,9 @@ function Header(props) {
   var server = (0, _AppContext.useApp)().server;
   return /*#__PURE__*/_react.default.createElement("div", {
     className: "header"
-  }, /*#__PURE__*/_react.default.createElement("label", null, "Pet Store"), /*#__PURE__*/_react.default.createElement(SearchButton, null), /*#__PURE__*/_react.default.createElement(CartButton, null));
+  }, /*#__PURE__*/_react.default.createElement("label", null, "Pet Store"), /*#__PURE__*/_react.default.createElement("div", {
+    className: "header-right"
+  }, /*#__PURE__*/_react.default.createElement(SearchButton, null), /*#__PURE__*/_react.default.createElement(CartButton, null)));
 }
 },{"react":"node_modules/react/index.js","react-router-dom":"node_modules/react-router-dom/dist/index.js","../MockServer":"app/MockServer.js","../context/AppContext":"app/context/AppContext.js","../../public/images/icon/search.png":"public/images/icon/search.png","../../public/images/icon/cart.png":"public/images/icon/cart.png","../component/Img":"app/component/Img.js","./Page.css":"app/page/Page.css"}],"public/images/icon/items.png":[function(require,module,exports) {
 module.exports = "/items.95515d09.png";
@@ -38330,10 +38332,11 @@ var _reactRouterDom = require("react-router-dom");
 var _back = _interopRequireDefault(require("../../public/images/icon/back.png"));
 var _home = _interopRequireDefault(require("../../public/images/icon/home2.png"));
 function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
 function HeaderItem(props) {
-  return /*#__PURE__*/_react.default.createElement("div", {
+  return /*#__PURE__*/_react.default.createElement("div", _extends({
     className: "zoomed-page-header-item"
-  }, props.children);
+  }, props.attr), props.children);
 }
 function HomeIcon(props) {
   return /*#__PURE__*/_react.default.createElement(HeaderItem, null, /*#__PURE__*/_react.default.createElement(_reactRouterDom.Link, {
@@ -38356,6 +38359,11 @@ function BackwardIcon(props) {
     src: _back.default
   }));
 }
+function ZoomedPageHeaderLeft(props) {
+  return /*#__PURE__*/_react.default.createElement("div", {
+    className: "zoomed-page-header-left"
+  }, /*#__PURE__*/_react.default.createElement(BackwardIcon, null), /*#__PURE__*/_react.default.createElement(HomeIcon, null));
+}
 function ZoomedPageHeader(props) {
   return /*#__PURE__*/_react.default.createElement("div", {
     className: "zoomed-page-header"
@@ -38365,16 +38373,18 @@ function ZoomedPageFooter(props) {
   return /*#__PURE__*/_react.default.createElement("div", null);
 }
 function HeaderTitle(props) {
-  return /*#__PURE__*/_react.default.createElement(HeaderItem, null, /*#__PURE__*/_react.default.createElement("label", null, props.title));
+  return /*#__PURE__*/_react.default.createElement(HeaderItem, {
+    attr: {
+      style: {
+        alignSelf: "center"
+      }
+    }
+  }, /*#__PURE__*/_react.default.createElement("label", null, props.title));
 }
 function ZoomedPage(props) {
-  var headerItems = [/*#__PURE__*/_react.default.createElement(BackwardIcon, null), /*#__PURE__*/_react.default.createElement(HomeIcon, null)];
-  for (var i = 3; i < 5; i++) {
-    headerItems.push( /*#__PURE__*/_react.default.createElement("div", null));
-  }
-  headerItems[2] = /*#__PURE__*/_react.default.createElement(HeaderTitle, {
+  var headerItems = [/*#__PURE__*/_react.default.createElement(ZoomedPageHeaderLeft, null), /*#__PURE__*/_react.default.createElement(HeaderTitle, {
     title: props.title
-  });
+  })];
   return /*#__PURE__*/_react.default.createElement(_Page.default, {
     key: props.title
   }, /*#__PURE__*/_react.default.createElement("div", {
@@ -38612,7 +38622,11 @@ function SignupPage(props) {
     }
   }), /*#__PURE__*/_react.default.createElement(ContractTab, null)));
 }
-},{"react":"node_modules/react/index.js","../ZoomedPage":"app/page/ZoomedPage.js","../../Hooks":"app/Hooks.js","../Page.css":"app/page/Page.css","./SignupPage.css":"app/page/signup/SignupPage.css"}],"app/page/category/CategoryPage.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","../ZoomedPage":"app/page/ZoomedPage.js","../../Hooks":"app/Hooks.js","../Page.css":"app/page/Page.css","./SignupPage.css":"app/page/signup/SignupPage.css"}],"app/page/category/CategoryPage.css":[function(require,module,exports) {
+var reloadCSS = require('_css_loader');
+module.hot.dispose(reloadCSS);
+module.hot.accept(reloadCSS);
+},{"_css_loader":"node_modules/parcel-bundler/src/builtins/css-loader.js"}],"app/page/category/CategoryPage.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -38621,15 +38635,17 @@ Object.defineProperty(exports, "__esModule", {
 exports.default = CategoryPage;
 var _react = _interopRequireWildcard(require("react"));
 var _StandardPage = _interopRequireDefault(require("../StandardPage"));
+var _MainPage = require("../main/MainPage");
+require("./CategoryPage.css");
 function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
 function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
 function CategoryPage(props) {
   return /*#__PURE__*/_react.default.createElement(_StandardPage.default, null, /*#__PURE__*/_react.default.createElement("div", {
     className: "page-category"
-  }));
+  }, /*#__PURE__*/_react.default.createElement(_MainPage.Categories, null)));
 }
-},{"react":"node_modules/react/index.js","../StandardPage":"app/page/StandardPage.js"}],"app/App.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","../StandardPage":"app/page/StandardPage.js","../main/MainPage":"app/page/main/MainPage.js","./CategoryPage.css":"app/page/category/CategoryPage.css"}],"app/App.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -38709,7 +38725,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "64459" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54484" + '/');
   ws.onmessage = function (event) {
     checkedAssets = {};
     assetsToAccept = [];

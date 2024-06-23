@@ -4,12 +4,15 @@
 
 .main-adslider {
     margin-top: 0.3vh;
-    height: 23vh;
+    height: 25vh;
     overflow: hidden;
 }
 
-.main-adslider img {
+
+.main-ad img {
     width: 100%;
+    max-height: 100%;
+    object-fit: scale-down;
     animation: main-ad-loading 5s linear normal;
 }
 

@@ -1,0 +1,9 @@
+.page-category {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
+
+.page-category .main-item {
+    width: 90%;
+}
